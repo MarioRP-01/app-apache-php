@@ -29,6 +29,10 @@ RUN apt-get install --yes libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
+## Install xdebug
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
 ## PostgreSQL PDO support
 RUN apt-get install --yes libpq-dev \
     && docker-php-ext-install pdo_pgsql
