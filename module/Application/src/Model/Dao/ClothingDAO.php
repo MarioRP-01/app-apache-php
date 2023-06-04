@@ -18,11 +18,10 @@ class ClothingDAO extends TableGateway {
         parent::__construct('clothing', $adapter, null, $resultSetPrototype);
     }
 
-    public function getClothingById(int $id) {
+    public function getClothingById(int $id): ?array {
         $sql = "SELECT * FROM clothing WHERE id = ?";
         $statement = $this->adapter->createStatement($sql);
         $result = $statement->execute([$id]);
-        $row = $result->current();
-        return $row;
+        return $result->current();
     }
 }
