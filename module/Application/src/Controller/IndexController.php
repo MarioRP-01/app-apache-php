@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Application\Controller;
 
-use Application\Model\ClothingDAO;
 use Application\Service\ClothingService;
-use Laminas\Db\Adapter\Adapter;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
@@ -20,6 +18,10 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $clothings = $this->clothingService->getAllClothingPaged(1, 10);
+
+        return new ViewModel([
+            'clothings' => $clothings
+        ]);
     }
 }

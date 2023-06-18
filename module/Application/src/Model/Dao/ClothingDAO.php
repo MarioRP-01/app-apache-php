@@ -3,12 +3,15 @@
 namespace Application\Model\Dao;
 
 use Application\Model\Clothing;
+use Application\Traits\QueryPaginationTrait;
 use Laminas\Db\Adapter\AdapterInterface;
+use Laminas\Db\Adapter\Driver\ResultInterface;
 use Laminas\Db\ResultSet\ResultSet;
 use Laminas\Db\TableGateway\TableGateway;
-use Laminas\Db\TableGateway\TableGatewayInterface;
 
 class ClothingDAO extends TableGateway {
+
+    use QueryPaginationTrait;
 
     public function __construct(AdapterInterface $adapter) {
         
@@ -19,9 +22,24 @@ class ClothingDAO extends TableGateway {
     }
 
     public function getClothingById(int $id): ?array {
+
         $sql = "SELECT * FROM clothing WHERE id = ?";
+
         $statement = $this->adapter->createStatement($sql);
         $result = $statement->execute([$id]);
         return $result->current();
+    }
+
+    public function getAllClothingPaged(
+        int $page, int $page_size
+    ) : ResultInterface {
+        
+        $sql = "SELECT * FROM clothing ORDER BY id";
+        return $this->executePagedQuery(
+            $sql,
+            [],
+            $page,
+            $page_size
+        );
     }
 }

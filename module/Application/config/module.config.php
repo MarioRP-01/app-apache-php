@@ -6,36 +6,69 @@ namespace Application;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
-use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
         'routes' => [
             'home' => [
-                'type'    => Literal::class,
+                'type' => Literal::class,
                 'options' => [
-                    'route'    => '/',
+                    'route' => '/',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
-                    ],
+                        'action' => 'index'
+                    ]
                 ],
             ],
-            'application' => [
-                'type'    => Segment::class,
+            'clothings-item' => [
+                'type' => Segment::class,
                 'options' => [
-                    'route'    => '/application[/:action]',
+                    'route' => '/clothings/:id',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
-                    ],
-                ],
+                        'action' => 'clothings'
+                    ]
+                ]
             ],
+            'api' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/api',
+                    'defaults' => [
+                        'controller' => Controller\Ajax\IndexAjaxController::class
+                    ]
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'clothings' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/clothings',
+                            'defaults' => [
+                                'action' => 'clothings'
+                            ]
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'item' => [
+                                'type' => Segment::class,
+                                'options' => [
+                                    'route' => '/:id',
+                                    'defaults' => [
+                                        'action' => 'clothing'
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\Ajax\IndexAjaxController::class => Controller\Ajax\Factory\IndexAjaxControllerFactory::class,
         ],
     ],
     'service_manager' => [
