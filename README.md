@@ -58,11 +58,13 @@ php composer.phar install
 
 ### Load Data into Database
 
-Alternatively, you can initialize the database using the following command:
+You can initialize the database using the following command:
 
 ```shell
 ./bin/init-db.sh
 ```
+
+This script uses the scripts in the `pg_data` folder to create the database and tables and load the data. The `data.csv` which contains the data was created using the [clothing-dataset-small-manager](https://github.com/MarioRP-01/clothing-dataset-small-manager) repository.
 
 ## Development
 
@@ -106,6 +108,12 @@ docker exec -it -u user:user app-php bash
 
 This command will start an interactive shell session (bash) in the container named app-php with the user user:user. The -u option specifies the user and group IDs that the container process should run as.
 
+If you want to access the container as root, use the following command:
+
+```shell
+docker exec -it app-php bash
+```
+
 ### Execute psql Commands From Running Container
 
 ```shell
@@ -118,6 +126,14 @@ Alternatively, you can access the container and execute the command from there:
 
 ```shell
 docker exec -it postgres bash
+```
+
+### Configure Apache
+
+The apache configuration is located in `httpd.conf` file. Reload the container to apply the changes:
+
+```shell
+docker compose restart app-php
 ```
 
 ### Laminas Development Mode
@@ -150,3 +166,9 @@ After making changes to one of the above-mentioned `.dist` configuration files y
 - [Configure adapter](https://docs.laminas.dev/tutorials/db-adapter/#configuring-the-default-adapter)
 - [Create models in laminas](https://docs.laminas.dev/tutorials/getting-started/database-and-models/)
 - [Store data with postgres](https://github.com/docker-library/docs/blob/master/postgres/README.md#where-to-store-data)
+
+### Apache Config
+
+- [Apache Exporter Repository](https://github.com/Lusitaniae/apache_exporter)
+- [Apache mod_status documentation](https://httpd.apache.org/docs/2.4/mod/mod_status.html)
+- [Override RewriteRule to ignore server-status](https://serverfault.com/a/388457)
