@@ -157,7 +157,8 @@ After making changes to one of the above-mentioned `.dist` configuration files y
 - [docker exec documentation](https://docs.docker.com/engine/reference/commandline/exec/)
 
 ### Laminas Service Manager
--  [Configure service manager](https://docs.laminas.dev/laminas-servicemanager/configuring-the-service-manager/#aliases)
+
+- [Configure service manager](https://docs.laminas.dev/laminas-servicemanager/configuring-the-service-manager/#aliases).
 
 ### Database Config
 
@@ -169,6 +170,15 @@ After making changes to one of the above-mentioned `.dist` configuration files y
 
 ### Apache Config
 
-- [Apache Exporter Repository](https://github.com/Lusitaniae/apache_exporter)
-- [Apache mod_status documentation](https://httpd.apache.org/docs/2.4/mod/mod_status.html)
-- [Override RewriteRule to ignore server-status](https://serverfault.com/a/388457)
+- [Apache Exporter Repository](https://github.com/Lusitaniae/apache_exporter).
+- [Apache mod_status documentation](https://httpd.apache.org/docs/2.4/mod/mod_status.html).
+- [Apache Access Control](https://httpd.apache.org/docs/2.4/en/howto/access.html).
+- [Upgrade Apache access from 2.2 to 2.4](https://httpd.apache.org/docs/2.4/upgrading.html#access).
+
+- [Prometheus: Apache Exporter – Install and Config – Ubuntu, CentOS](https://www.shellhacks.com/prometheus-apache-exporter-install-config-ubuntu-centos/).
+- [Monitor Apache Web Server with Prometheus and Grafana in 5 minutes](https://computingforgeeks.com/monitor-apache-web-server-prometheus-grafana/).
+- [One exporter for each Apache instance](https://github.com/Lusitaniae/apache_exporter/issues/37#issuecomment-357419581).
+- [Information about Kubernetes use case](https://github.com/Lusitaniae/apache_exporter/issues/37#issuecomment-1224380326)
+
+- [Stop processing Rules for server-status](https://serverfault.com/a/388457).
+- [Allow all IPs in Apache](https://stackoverflow.com/a/19588786).
