@@ -87,8 +87,8 @@ php composer.phar install
 # Or
 
 # update dependencies based in composer.json
-php composer.phar update  
-``` 
+php composer.phar update 
+```
 
 ### Make Changes to the Dockerfile
 
@@ -180,5 +180,8 @@ After making changes to one of the above-mentioned `.dist` configuration files y
 - [One exporter for each Apache instance](https://github.com/Lusitaniae/apache_exporter/issues/37#issuecomment-357419581).
 - [Information about Kubernetes use case](https://github.com/Lusitaniae/apache_exporter/issues/37#issuecomment-1224380326)
 
-- [Stop processing Rules for server-status](https://serverfault.com/a/388457).
+- [Run Multiple Services in a Container](https://docs.docker.com/config/containers/multi-service_container/).
+- [php-apache Dockerfile](https://github.com/docker-library/php/blob/master/8.2/bullseye/apache/Dockerfile)
+
+- [RewriteRule to ignore server-status](https://serverfault.com/a/388457).
 - [Allow all IPs in Apache](https://stackoverflow.com/a/19588786).
