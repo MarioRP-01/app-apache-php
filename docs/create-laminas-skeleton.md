@@ -1,6 +1,6 @@
 # Laminas Skeleton
 
-## Introduction 
+## Introduction
 
 This is a step by step guide to configure a Laminas skeleton application using a docker container. Check the [documentation](../README.md) for more information about the project.
 
