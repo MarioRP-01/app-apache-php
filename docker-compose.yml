@@ -20,6 +20,7 @@ services:
     ports: 
       - "8080:80"
     volumes:
+      - ./resources:/data-nfs
       - ./app:/var/www
       - ./httpd.conf:/etc/apache2/sites-available/000-default.conf:ro
     depends_on:
