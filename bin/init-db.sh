@@ -1,6 +1,8 @@
 #!/bin/bash
 
-LOCAL_PG_DATA=../pg_data
+LOCAL_PROYECT_PATH=$(dirname $0)/..
+
+LOCAL_PG_DATA=$LOCAL_PROYECT_PATH/pg_data
 LOCAL_CREATE_TABLE_SCRIPT=$LOCAL_PG_DATA/create-table.sql
 LOCAL_LOAD_DATA_SCRIPT=$LOCAL_PG_DATA/load-data.sql
 LOCAL_DATA_CSV=$LOCAL_PG_DATA/data.csv

@@ -1,1 +1,3 @@
 .env
+pg_data/data.csv 
+resources/images

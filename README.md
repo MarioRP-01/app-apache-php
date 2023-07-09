@@ -1,8 +1,15 @@
 # App Apache PHP
 
-## Description
+## Overview
 
 This project is a basic application with Apache and PHP made to test apache's metric exports methods.
+
+Besides it contains multiple documentation about different topics related to the project. You can find the documentation in the `docs` folder.
+
+- [Export Apache Metrics to Prometheus](docs/export-apache-metrics-to-prometheus.md)
+- [Create Laminas Skeleton](docs/create-laminas-skeleton.md)
+- [Create ZF Skeleton](docs/create-zf-skeleton.md)
+- [Set Up Data](docs/set-up-data.md)
 
 ## Pre-requisites
 
@@ -56,15 +63,9 @@ php composer.phar install
     php composer.phar install
     ```
 
-### Load Data into Database
+### Set up Data Storage
 
-You can initialize the database using the following command:
-
-```shell
-./bin/init-db.sh
-```
-
-This script uses the scripts in the `pg_data` folder to create the database and tables and load the data. The `data.csv` which contains the data was created using the [clothing-dataset-small-manager](https://github.com/MarioRP-01/clothing-dataset-small-manager) repository.
+Refer to the [Set up Data Storage](docs/set-up-data-storage.md) documentation for detailed instructions on configuring and managing data storage for your project. It covers PostgreSQL initialization and other details.
 
 ## Development
 
@@ -163,10 +164,10 @@ After making changes to one of the above-mentioned `.dist` configuration files y
 ### Database Config
 
 - [laminas-db documentation](https://docs.laminas.dev/tutorials/db-adapter/)
-- [laminas-db adapter documentation](https://docs.laminas.dev/laminas-db/adapter/)
-- [Configure adapter](https://docs.laminas.dev/tutorials/db-adapter/#configuring-the-default-adapter)
-- [Create models in laminas](https://docs.laminas.dev/tutorials/getting-started/database-and-models/)
-- [Store data with postgres](https://github.com/docker-library/docs/blob/master/postgres/README.md#where-to-store-data)
+- [laminas-db adapter documentation](https://docs.laminas.dev/laminas-db/adapter/).
+- [Configure adapter](https://docs.laminas.dev/tutorials/db-adapter/#configuring-the-default-adapter).
+- [Create models in laminas](https://docs.laminas.dev/tutorials/getting-started/database-and-models/).
+- [Store data with postgres](https://github.com/docker-library/docs/blob/master/postgres/README.md#where-to-store-data).
 
 ### Apache Config
 
