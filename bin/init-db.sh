@@ -13,7 +13,7 @@ CONTAINER_PG_DATA=/var/lib/postgresql/data/pg_data
 CONTAINER_CREATE_TABLE_SCRIPT=$CONTAINER_PG_DATA/create-table.sql
 CONTAINER_LOAD_DATA_SCRIPT=$CONTAINER_PG_DATA/load-data.sql
 
-source ../.env
+source $LOCAL_PROYECT_PATH/.env
 
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
 
