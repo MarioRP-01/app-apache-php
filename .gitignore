@@ -1,3 +1,6 @@
 .env
 pg_data/data.csv 
 resources/images
+
+.vscode
+!.vscode/settings.json
