@@ -4,17 +4,18 @@ namespace Application\Service;
 
 use Application\Model\Clothing;
 use Application\Model\Dao\ClothingDAO;
+use Application\Utils\Constants;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Stdlib\ArrayUtils;
 
 class ClothingService
 {
     private ClassMethodsHydrator $hydrator;
-    private ClothingDAO $clothingDAO;
 
-    public function __construct(ClothingDAO $clothingDAO) {
+    public function __construct(
+        readonly ClothingDAO $clothingDAO
+    ) {
         $this->hydrator = new ClassMethodsHydrator();
-        $this->clothingDAO = $clothingDAO;
     }
 
     /**
@@ -37,5 +38,14 @@ class ClothingService
                 new Clothing
             ) :
             null;
+    }
+
+    /**
+     * Return the path to the image file if it exists, otherwise return false
+     */
+    public function getImagePath(string $file_name): string|bool {
+        $file_name = basename($file_name);
+        $path = Constants::CLOTHING_IMAGE_PATH . '/' . $file_name;
+        return file_exists($path) ? $path : false;
     }
 }

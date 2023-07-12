@@ -23,7 +23,7 @@ class Clothing extends \ArrayObject {
 		return $this;
 	}
 
-	public function getFile_name(): ?string {
+	public function getFileName(): ?string {
 		return $this->file_name;
 	}
 	
@@ -31,7 +31,7 @@ class Clothing extends \ArrayObject {
 	 * @param  $file_name 
 	 * @return self
 	 */
-	public function setFile_name(?string $file_name): self {
+	public function setFileName(?string $file_name): self {
 		$this->file_name = $file_name;
 		return $this;
 	}

@@ -58,11 +58,20 @@ return [
                                         'action' => 'clothing'
                                     ]
                                 ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                            'images' => [
+                                'type' => Segment::class,
+                                'options' => [
+                                    'route' => '/images/:file_name',
+                                    'defaults' => [
+                                        'action' => 'get-clothing-image'
+                                    ]
+                                ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
