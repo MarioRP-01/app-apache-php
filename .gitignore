@@ -2,5 +2,5 @@
 pg_data/data.csv 
 resources/images
 
-.vscode
+.vscode/*
 !.vscode/settings.json

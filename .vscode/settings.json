@@ -1,4 +1,14 @@
 {
     "git.openRepositoryInParentFolders": "always",
-    "sqltools.sessionFilesFolder": ".vscode/.sqltools"
+    "sqltools.sessionFilesFolder": ".vscode/.sqltools",
+    "cSpell.languageSettings": [
+        {
+            "languageId": "en",
+            "allowCompoundWords": true
+        },
+        {
+            "languageId": "es",
+            "allowCompoundWords": true
+        }
+    ]
 }
