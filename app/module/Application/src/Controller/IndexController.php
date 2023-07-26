@@ -18,10 +18,10 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        $clothings = $this->clothingService->getAllClothingPaged(1, 10);
+        return new ViewModel();
+    }
 
-        return new ViewModel([
-            'clothings' => $clothings
-        ]);
+    public function clothingAction() {
+        return new ViewModel();
     }
 }

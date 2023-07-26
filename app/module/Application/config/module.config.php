@@ -26,7 +26,7 @@ return [
                     'route' => '/clothings/:id',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action' => 'clothings'
+                        'action' => 'clothing'
                     ]
                 ]
             ],
@@ -45,7 +45,7 @@ return [
                         'options' => [
                             'route' => '/clothings',
                             'defaults' => [
-                                'action' => 'clothings'
+                                'action' => 'get-clothings'
                             ]
                         ],
                         'may_terminate' => true,
@@ -55,7 +55,7 @@ return [
                                 'options' => [
                                     'route' => '/:id',
                                     'defaults' => [
-                                        'action' => 'clothing'
+                                        'action' => 'get-clothing'
                                     ]
                                 ]
                             ],

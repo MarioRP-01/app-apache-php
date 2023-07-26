@@ -77,7 +77,7 @@ class Clothing extends \ArrayObject {
 
     public function exchangeArray(object|array $data): array {
         $this->id = $data['id'] ?? null;
-        $this->file_name = $data['file_name'] ?? null;
+        $this->file_name = $data['file_name'] ?? null;   
         $this->label = $data['label'] ?? null;
         $this->size = $data['size'] ?? null;
         $this->kids = $data['kids'] ?? null;

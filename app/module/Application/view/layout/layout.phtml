@@ -21,6 +21,8 @@
                                 'href' => $this->basePath() . '/img/favicon.ico'
                             ])
             ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/mosaic.css'))
+            ->prependStylesheet($this->basePath('css/divider.css'))
             ->prependStylesheet(
                 "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
                 "screen",
@@ -38,14 +40,14 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?= $this->url('home') ?>"> Clothing 51 </a>
-                <button 
+                <a class="navbar-brand" href="<?= $this->url('home') ?>"> Second Use </a>
+                <button
                     class="navbar-toggler"
                     type="button"
-                    data-bs-toggle="collapse" 
-                    data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" 
-                    aria-expanded="false" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
                     <span class="navbar-toggler-icon"></span>
@@ -74,7 +76,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="row g-0">
             <?= $this->content ?>
             <hr>
             <footer>
@@ -93,6 +95,7 @@
                     "crossorigin" => "anonymous"
                 ]
             )
+            ->appendFile($this->basePath('js/index.js'));
         ?>
     </body>
 </html>

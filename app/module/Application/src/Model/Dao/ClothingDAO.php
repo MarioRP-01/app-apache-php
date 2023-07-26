@@ -31,15 +31,16 @@ class ClothingDAO extends TableGateway {
     }
 
     public function getAllClothingPaged(
-        int $page, int $page_size
+        int $start, 
+        int $limit
     ) : ResultInterface {
         
         $sql = "SELECT * FROM clothing ORDER BY id";
         return $this->executePagedQuery(
             $sql,
             [],
-            $page,
-            $page_size
+            $start,
+            $limit
         );
     }
 }

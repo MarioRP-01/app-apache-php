@@ -10,3 +10,10 @@
     background-color: var(--brand-color);
     border-color: var(--brand-color);
 }
+
+/* Extend Bootstrap */
+
+.py-10 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}

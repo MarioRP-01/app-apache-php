@@ -1,0 +1,30 @@
+#mosaic {
+    line-height: 0;
+    column-count: 4;
+    column-gap: 0px;
+}
+
+#mosaic img {
+    width: 100%;
+    height: auto;
+}
+
+#mosaic img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+    #mosaic {
+        column-count:         3;
+    }
+}
+@media (max-width: 768px) {
+    #mosaic {
+        column-count:         2;
+    }
+}
+@media (max-width: 576px) {
+    #mosaic {
+        column-count:         1;
+    }
+}
