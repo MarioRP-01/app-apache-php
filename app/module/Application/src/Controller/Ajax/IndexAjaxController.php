@@ -18,7 +18,7 @@ class IndexAjaxController extends AbstractActionController
 
     public function getClothingsAction() {
         $start = $this->params()->fromQuery('start', 0);
-        $limit = $this->params()->fromQuery('limit', 50);
+        $limit = $this->params()->fromQuery('limit', 8);
 
         $clothings = $this->clothingService->getAllClothingPaged($start, $limit);
 

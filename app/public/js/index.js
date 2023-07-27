@@ -1,4 +1,4 @@
-const mosaic = document.getElementById('mosaic')
+const cards = document.getElementById('product-cards')
 const near_to_bottom = 100
 const url = new URL(window.location.href)
 
@@ -31,15 +31,27 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(clothing_url)
         .then(response => response.json())
         .then(data => {
-            let mosaicItems = ''
+            let items = ''
             data.results.forEach(element => {
-                mosaicItems += `
-                    <div class="mosaic-item">
-                        <img src="${element._expandable.image}" alt="${element.name}">
+                items += `
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 position-relative">
+                        <div class="product-card">
+                        <img src="${element._expandable.image}" alt="${element.file_name}">
+                        <div class="product-card-body">
+                            <div class="product-name">${element.file_name}</div>
+                            <div class="container product-card-body-content">
+                                <div class="product-label">${element.label}</div>
+                                <div class="product-description">
+                                    <p class="ellipsis-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dolor aperiam suscipit, consectetur, nostrum, illum corrupti libero aliquam ipsum debitis quos explicabo non eaque nesciunt beatae inventore assumenda eius. Possimus iusto distinctio debitis esse odio ipsam a labore animi magnam!</p>
+                                </div>
+                            </div>
+                            <a class="link-show-product"> Show More </a>
+                        </div>
+                        </div>
                     </div>
                 `
             })
-            mosaic.innerHTML += mosaicItems
+            cards.innerHTML += items
         })
         .catch(error => console.error(error))
 })
