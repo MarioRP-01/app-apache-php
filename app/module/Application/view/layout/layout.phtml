@@ -20,18 +20,7 @@
                                 'type' => 'image/vnd.microsoft.icon',
                                 'href' => $this->basePath() . '/img/favicon.ico'
                             ])
-            ->prependStylesheet($this->basePath('css/style.css'))
-            ->prependStylesheet($this->basePath('css/card.css'))
-            ->prependStylesheet($this->basePath('css/divider.css'))
-            ->prependStylesheet(
-                "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
-                "screen",
-                "",
-                [
-                    "integrity" => "sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM",
-                    "crossorigin" => "anonymous"
-                ]
-            )
+            ->prependStylesheet($this->basePath('css/main.css'));
         ?>
 
         <!-- Scripts -->
@@ -86,16 +75,5 @@
                 </p>
             </footer>
         </div>
-        <?= $this->inlineScript()
-            ->prependFile(
-                "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
-                "text/javascript",
-                [
-                    "integrity" => "sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz",
-                    "crossorigin" => "anonymous"
-                ]
-            )
-            ->appendFile($this->basePath('js/index.js'));
-        ?>
     </body>
 </html>

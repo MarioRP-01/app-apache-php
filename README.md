@@ -186,3 +186,12 @@ After making changes to one of the above-mentioned `.dist` configuration files y
 
 - [RewriteRule to ignore server-status](https://serverfault.com/a/388457).
 - [Allow all IPs in Apache](https://stackoverflow.com/a/19588786).
+
+### Node
+
+- [Use custom non-root user](https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user).
+- [Webpack sass-loader](https://webpack.js.org/loaders/sass-loader/)
+- [Dart Sass](https://sass-lang.com/dart-sass/)
+- [Relative SASS routes in Webpack](https://github.com/bholloway/resolve-url-loader/blob/v5/packages/resolve-url-loader/README.md#configure-webpack)
+- [Import Boostrap with Webpack](https://getbootstrap.com/docs/5.2/getting-started/webpack/)
+- [Sass directory structure](https://www.webdesignerdepot.com/2020/12/2-smartest-ways-to-structure-sass/)
