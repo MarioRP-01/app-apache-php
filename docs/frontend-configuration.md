@@ -229,7 +229,6 @@ This configuration will be used by swc and `postcss-preset-env` plugin to determ
 
     We will use `standard` to lint our javascript files.
 
-
     ```shell
     npm install standard -D
     ```
