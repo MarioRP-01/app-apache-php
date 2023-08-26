@@ -1,0 +1,5 @@
+.example2 {
+    @include breakpoint(medium) {
+        background-color: red;
+    }
+}
