@@ -18,15 +18,15 @@ class ClothingDAO extends TableGateway {
         $resultSetPrototype = new ResultSet();
         $resultSetPrototype->setArrayObjectPrototype(new Clothing());
 
-        parent::__construct('clothing', $adapter, null, $resultSetPrototype);
+        parent::__construct('suse_clothing', $adapter, null, $resultSetPrototype);
     }
 
-    public function getClothingById(int $id): ?array {
+    public function getClothingById(string $uuid): ?array {
 
-        $sql = "SELECT * FROM clothing WHERE id = ?";
+        $sql = "SELECT * FROM suse_clothing WHERE uuid = ?";
 
         $statement = $this->adapter->createStatement($sql);
-        $result = $statement->execute([$id]);
+        $result = $statement->execute([$uuid]);
         return $result->current();
     }
 
@@ -35,7 +35,7 @@ class ClothingDAO extends TableGateway {
         int $limit
     ) : ResultInterface {
         
-        $sql = "SELECT * FROM clothing ORDER BY id";
+        $sql = "SELECT * FROM suse_clothing ORDER BY uuid";
         return $this->executePagedQuery(
             $sql,
             [],

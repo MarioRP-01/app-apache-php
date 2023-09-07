@@ -81,9 +81,9 @@ class ClothingService {
     /**
      * Return the path to the image file if it exists, otherwise return false
      */
-    public function getImagePath(string $file_name): string|bool {
-        $file_name = basename($file_name);
-        $path = Constants::CLOTHING_IMAGE_PATH . '/' . $file_name;
+    public function getImagePath(string $uuid): string|bool {
+        $uuid = basename($uuid);
+        $path = Constants::CLOTHING_IMAGE_PATH . '/' . $uuid . '.jpg'; 
         return file_exists($path) ? $path : false;
     }
 
@@ -98,7 +98,7 @@ class ClothingService {
     public function getImageLinkByClothing(Clothing $clothing) {
 
         $params = [
-            'file_name' => $clothing->getFileName(),
+            'file_name' => $clothing->uuid,
         ];
 
         $options = [
@@ -126,8 +126,8 @@ class ClothingService {
     public function createClothing_links(Clothing $clothing): array {
 
         return [
-            'self' => $this->getClothingItemLink($clothing->getId()),
-            'webui' => $this->getClothingItemUILink($clothing->getId()),
+            'self' => $this->getClothingItemLink($clothing->uuid),
+            'webui' => $this->getClothingItemUILink($clothing->uuid),
         ];
     }
 

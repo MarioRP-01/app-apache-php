@@ -23,7 +23,7 @@ return [
             'clothings-item' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route' => '/clothings/:id',
+                    'route' => '/clothings/:uuid',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'clothing'
@@ -53,7 +53,7 @@ return [
                             'item' => [
                                 'type' => Segment::class,
                                 'options' => [
-                                    'route' => '/:id',
+                                    'route' => '/:uuid',
                                     'defaults' => [
                                         'action' => 'get-clothing'
                                     ]
@@ -62,7 +62,7 @@ return [
                             'images' => [
                                 'type' => Segment::class,
                                 'options' => [
-                                    'route' => '/images/:file_name',
+                                    'route' => '/images/:uuid',
                                     'defaults' => [
                                         'action' => 'get-clothing-image'
                                     ]

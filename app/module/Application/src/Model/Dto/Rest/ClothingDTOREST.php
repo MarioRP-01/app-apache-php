@@ -10,11 +10,16 @@ class ClothingDTOREST implements DTORESTInterface {
      * @param array<string, string> $_expandable
      */
     public function __construct(
-        readonly ?int $id,
-        readonly ?string $file_name,
+        readonly ?string $uuid,
+        readonly ?string $name,
+        readonly ?string $brand,
+        readonly ?float $price,
+        readonly ?string $description,
+        readonly ?string $primary_color,
         readonly ?string $label,
-        readonly ?string $size,
         readonly ?bool $kids,
+        readonly ?int $gender_id,
+        readonly ?int $category_id,
         private array $_links,
         private array $_expandable
     ) {
@@ -23,34 +28,19 @@ class ClothingDTOREST implements DTORESTInterface {
 
     public static function fromDTO(Clothing $clothing) {
         return new self(
-            $clothing->getId(),
-            $clothing->getFileName(),
-            $clothing->getLabel(),
-            $clothing->getSize(),
-            $clothing->getKids(),
+            $clothing->uuid,
+            $clothing->name,
+            $clothing->brand,
+            $clothing->price,
+            $clothing->description,
+            $clothing->primary_color,
+            $clothing->label,
+            $clothing->kids,
+            $clothing->gender_id,
+            $clothing->category_id,
             [],
             []
         );
-    }
-
-    public function getId(): ?int {
-        return $this->id;
-    }
-
-    public function getFileName(): ?string {
-        return $this->file_name;
-    }
-
-    public function getLabel(): ?string {
-        return $this->label;
-    }
-
-    public function getSize(): ?string {
-        return $this->size;
-    }
-
-    public function getKids(): ?bool {
-        return $this->kids;
     }
 
     public function get_links(): array {
@@ -73,11 +63,16 @@ class ClothingDTOREST implements DTORESTInterface {
 
     public function jsonSerialize(): array {
         return [
-            'id' => $this->getId(),
-            'file_name' => $this->getFileName(),
-            'label' => $this->getLabel(),
-            'size' => $this->getSize(),
-            'kids' => $this->getKids(),
+            'uuid' => $this->uuid,
+            'name' => $this->name,
+            'brand' => $this->brand,
+            'price' => $this->price,
+            'description' => $this->description,
+            'primary_color' => $this->primary_color,
+            'label' => $this->label,
+            'kids' => $this->kids,
+            'gender_id' => $this->gender_id,
+            'category_id' => $this->category_id,
             '_links' => $this->get_links(),
             '_expandable' => $this->get_expandable()
         ];

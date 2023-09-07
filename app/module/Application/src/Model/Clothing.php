@@ -4,90 +4,40 @@ namespace Application\Model;
 
 class Clothing extends \ArrayObject {
     
-    private ?int $id;
-    private ?string $file_name;
-    private ?string $label;
-    private ?string $size;
-    private ?bool $kids;
-
-	public function getId(): ?int {
-		return $this->id;
-	}
-	
-	/**
-	 * @param  $id 
-	 * @return self
-	 */
-	public function setId(?int $id): self {
-		$this->id = $id;
-		return $this;
-	}
-
-	public function getFileName(): ?string {
-		return $this->file_name;
-	}
-	
-	/**
-	 * @param  $file_name 
-	 * @return self
-	 */
-	public function setFileName(?string $file_name): self {
-		$this->file_name = $file_name;
-		return $this;
-	}
-
-	public function getLabel(): ?string {
-		return $this->label;
-	}
-	
-	/**
-	 * @param  $label 
-	 * @return self
-	 */
-	public function setLabel(?string $label): self {
-		$this->label = $label;
-		return $this;
-	}
-
-	public function getSize(): ?string {
-		return $this->size;
-	}
-	
-	/**
-	 * @param  $size 
-	 * @return self
-	 */
-	public function setSize(?string $size): self {
-		$this->size = $size;
-		return $this;
-	}
-
-	public function getKids(): ?bool {
-		return $this->kids;
-	}
-	
-	/**
-	 * @param  $kids 
-	 * @return self
-	 */
-	public function setKids(?bool $kids): self {
-		$this->kids = $kids;
-		return $this;
-	}
+    public ?string $uuid;
+	public ?string $name;
+	public ?string $brand;
+	public ?float $price;
+	public ?string $description;
+	public ?string $primary_color;
+	public ?string $label;
+	public ?bool $kids;
+	public ?int $gender_id;
+	public ?int $category_id;
 
     public function exchangeArray(object|array $data): array {
-        $this->id = $data['id'] ?? null;
-        $this->file_name = $data['file_name'] ?? null;   
-        $this->label = $data['label'] ?? null;
-        $this->size = $data['size'] ?? null;
-        $this->kids = $data['kids'] ?? null;
+        $this->uuid = $data['uuid'] ?? null;
+		$this->name = $data['name'] ?? null;
+		$this->brand = $data['brand'] ?? null;
+		$this->price = $data['price'] ?? null;
+		$this->description = $data['description'] ?? null;
+		$this->primary_color = $data['primary_color'] ?? null;
+		$this->label = $data['label'] ?? null;
+		$this->kids = $data['kids'] ?? null;
+		$this->gender_id = $data['gender_id'] ?? null;
+		$this->category_id = $data['category_id'] ?? null;
 
         return [
-            'id' => $this->id,
-            'file_name' => $this->file_name,
-            'label' => $this->label,
-            'size' => $this->size,
-            'kids' => $this->kids,
+            'uuid' => $this->uuid,
+			'name' => $this->name,
+			'brand' => $this->brand,
+			'price' => $this->price,
+			'description' => $this->description,
+			'primary_color' => $this->primary_color,
+			'label' => $this->label,
+			'kids' => $this->kids,
+			'gender_id' => $this->gender_id,
+			'category_id' => $this->category_id
         ];
     }  
 }

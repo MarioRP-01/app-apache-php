@@ -37,9 +37,9 @@ class IndexAjaxController extends AbstractActionController
         $response = $this->getResponse();
         $headers = $response->getHeaders();
 
-        $file_name = $this->params('file_name');
+        $uuid = $this->params('uuid');
 
-        if (!$path = $this->clothingService->getImagePath($file_name))
+        if (!$path = $this->clothingService->getImagePath($uuid))
             return $response->setStatusCode(404);
         
         $fileContent = file_get_contents($path);
