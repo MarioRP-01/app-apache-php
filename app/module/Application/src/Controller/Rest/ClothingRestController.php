@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Application\Controller\Ajax;
+namespace Application\Controller\Rest;
 
 use Application\Service\ClothingService;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\Stdlib\ResponseInterface;
 use Laminas\View\Model\ViewModel;
 
-class IndexAjaxController extends AbstractActionController
+class ClothingRestController extends AbstractActionController
 {
 
     public function __construct(

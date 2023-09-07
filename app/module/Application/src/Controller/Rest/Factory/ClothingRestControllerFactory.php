@@ -1,13 +1,13 @@
 <?php
 
-namespace Application\Controller\Ajax\Factory;
+namespace Application\Controller\Rest\Factory;
 
-use Application\Controller\Ajax\IndexAjaxController;
+use Application\Controller\Rest\ClothingRestController;
 use Application\Service\ClothingService;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
 
-class IndexAjaxControllerFactory implements FactoryInterface {
+class ClothingRestControllerFactory implements FactoryInterface {
 
     public function __invoke(
         ContainerInterface $container,
@@ -17,6 +17,6 @@ class IndexAjaxControllerFactory implements FactoryInterface {
         /** @var ClothingService $clothingService */
         $clothingService = $container->get(ClothingService::class);
         
-        return new IndexAjaxController($clothingService);
+        return new ClothingRestController($clothingService);
     }
 }

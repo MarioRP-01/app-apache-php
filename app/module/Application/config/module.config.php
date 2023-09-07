@@ -35,7 +35,7 @@ return [
                 'options' => [
                     'route' => '/api',
                     'defaults' => [
-                        'controller' => Controller\Ajax\IndexAjaxController::class
+                        'controller' => Controller\Rest\ClothingRestController::class
                     ]
                 ],
                 'may_terminate' => false,
@@ -77,7 +77,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
-            Controller\Ajax\IndexAjaxController::class => Controller\Ajax\Factory\IndexAjaxControllerFactory::class,
+            Controller\Rest\ClothingRestController::class => Controller\Rest\Factory\ClothingRestControllerFactory::class,
         ],
     ],
     'service_manager' => [
