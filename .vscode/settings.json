@@ -10,5 +10,9 @@
             "languageId": "es",
             "allowCompoundWords": true
         }
+    ],
+    "cSpell.words": [
+        "fkey",
+        "ossp"
     ]
 }

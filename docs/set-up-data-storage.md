@@ -12,31 +12,19 @@ You can download the dataset from the repository and place it in the `resources`
 git clone https://github.com/alexeygrigorev/clothing-dataset-small
 ```
 
-Once you have downloaded the dataset, you can use the following command to get the data into an usable format:
+Once you have downloaded the dataset, you can use the following commands to move the images into the `resources` directory.
 
 ```shell
-mkdir data
-docker run -it --rm \
-    -v $(pwd)/clothing-dataset-small:/clothing-dataset-small:ro \
-    -v $(pwd)/data:/data:rw \
-    dataset-manager:latest \
-    dataset-manager -o clothing-dataset-small -d /data
+# Create the images directory if it doesn't exist
+mkdir -p images
+
+# Move all image files to the images directory
+find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec mv {} images/ \;
 ```
 
-`dataset-manager` is a tool to manage [clothing-dataset-small](https://github.com/alexeygrigorev/clothing-dataset-small). For more details about the usage check the [image](https://hub.docker.com/r/mariorp01/clothing-dataset-small-manager) and the [repository](https://github.com/MarioRP-01/clothing-dataset-small-manager).
+Inside the `pg_data` directory you will find a `data.csv` file. This file contains some data from the dataset. It was generated using the [dataset-manager](https://github.com/MarioRP-01/clothing-dataset-small-manager) tool.
 
 Now just move `data/data.csv` to `pg_data` directory and `data/images` to `nfs_server`.
-
-```shell
-mv data/data.csv pg_data
-mv data/images/* resources
-```
-
-And finally, remove the `data` and `clothing-dataset-small` directory.
-
-```shell
-rm -rf data clothing-dataset-small
-```
 
 ## PostgreSQL
 
