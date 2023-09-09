@@ -13,7 +13,7 @@ class Clothing extends \ArrayObject {
 	public ?string $label;
 	public ?bool $kids;
 	public ?int $gender_id;
-	public ?int $category_id;
+	public ?int $size_id;
 
     public function exchangeArray(object|array $data): array {
         $this->uuid = $data['uuid'] ?? null;
@@ -25,7 +25,7 @@ class Clothing extends \ArrayObject {
 		$this->label = $data['label'] ?? null;
 		$this->kids = $data['kids'] ?? null;
 		$this->gender_id = $data['gender_id'] ?? null;
-		$this->category_id = $data['category_id'] ?? null;
+		$this->size_id = $data['size_id'] ?? null;
 
         return [
             'uuid' => $this->uuid,
@@ -37,7 +37,7 @@ class Clothing extends \ArrayObject {
 			'label' => $this->label,
 			'kids' => $this->kids,
 			'gender_id' => $this->gender_id,
-			'category_id' => $this->category_id
+			'size_id' => $this->size_id
         ];
     }  
 }

@@ -56,3 +56,20 @@ WHERE
     s.name IS NOT NULL;
 
 ALTER TABLE suse_clothing DROP size;
+
+-- images
+
+CREATE TABLE suse_image (
+    id SERIAL,
+    filename VARCHAR(255) NOT NULL UNIQUE,
+    imageable_type VARCHAR(255) NOT NULL,
+    imageable_id UUID NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO suse_image (filename, imageable_type, imageable_id)
+SELECT 
+    'images/' || uuid || '.jpg' AS filename,
+    CAST('suse_clothing' AS text) AS imageable_type,
+    uuid AS imageable_id
+FROM suse_clothing;

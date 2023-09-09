@@ -21,12 +21,29 @@ class ClothingDAO extends TableGateway {
         parent::__construct('suse_clothing', $adapter, null, $resultSetPrototype);
     }
 
+    // public function getClothingById(string $uuid): ?array {
+
+    //     $sql = "SELECT * FROM suse_clothing WHERE uuid = ?";
+
+    //     $statement = $this->adapter->createStatement($sql);
+    //     $result = $statement->execute([$uuid]);
+    //     return $result->current();
+    // }
+
     public function getClothingById(string $uuid): ?array {
 
-        $sql = "SELECT * FROM suse_clothing WHERE uuid = ?";
+        $sql = "
+            SELECT * 
+            FROM suse_clothing 
+            WHERE uuid = :uuid
+        ";
 
-        $statement = $this->adapter->createStatement($sql);
-        $result = $statement->execute([$uuid]);
+        $params = [
+            'uuid' => $uuid
+        ];
+
+        $statement = $this->adapter->createStatement($sql, $params);
+        $result = $statement->execute();
         return $result->current();
     }
 

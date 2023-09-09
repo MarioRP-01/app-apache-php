@@ -9,7 +9,7 @@ use Application\Model\Pagination\Page;
 use Application\Model\Pagination\PageInterface;
 use Application\Traits\RouterTrait;
 use Application\Utils\Constants;
-use Laminas\Hydrator\ClassMethodsHydrator;
+use Laminas\Hydrator\ObjectPropertyHydrator;
 use Laminas\Router\Http\TreeRouteStack;
 use Laminas\Stdlib\ArrayUtils;
 
@@ -17,13 +17,13 @@ class ClothingService {
     
     use RouterTrait;
 
-    private ClassMethodsHydrator $hydrator;
+    private ObjectPropertyHydrator $hydrator;
 
     public function __construct(
         readonly ClothingDAO $clothingDAO,
         readonly TreeRouteStack $router,
     ) {
-        $this->hydrator = new ClassMethodsHydrator();
+        $this->hydrator = new ObjectPropertyHydrator();
     }
 
     /**
@@ -55,18 +55,15 @@ class ClothingService {
         );
     }
 
-    public function getClothingById(int $id): ?Clothing {
-        $result = $this->clothingDAO->getClothingById($id);
-        return !is_null($result) ?
-            $this->hydrator->hydrate(
-                $result,
-                new Clothing
-            ) :
-            null;
+    public function getClothingById(string $uuid): ?Clothing {
+        $result = $this->clothingDAO->getClothingById($uuid);
+        if (is_null($result)) return null;
+        $result['price'] = floatval($result['price']);
+        return $this->hydrator->hydrate($result, new Clothing);
     }
 
-    public function getClothingDTORESTById(int $id): ?ClothingDTOREST {
-        $clothing = $this->getClothingById($id);
+    public function getClothingDTORESTById(string $uuid): ?ClothingDTOREST {
+        $clothing = $this->getClothingById($uuid);
         return !is_null($clothing) ?
             ClothingDTOREST::fromDTO($clothing)
                 ->set_expandable($this->createClothing_expandable($clothing))
@@ -108,9 +105,9 @@ class ClothingService {
         return $this->getRoute('api/clothings/images', $params, $options);
     }
 
-    public function getImageLinkById(int $id) {
+    public function getImageLinkById(string $uuid) {
 
-        $clothing = $this->getClothingById($id);
+        $clothing = $this->getClothingById($uuid);
         if (is_null($clothing))
             return null;
 
