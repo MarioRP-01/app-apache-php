@@ -20,8 +20,8 @@ class ClothingDTOREST implements DTORESTInterface {
         readonly ?bool $kids,
         readonly ?int $gender_id,
         readonly ?int $size_id,
-        private array $_links,
-        private array $_expandable
+        private array $_links = [],
+        private array $_expandable = []
     ) {
 
     }
@@ -37,9 +37,7 @@ class ClothingDTOREST implements DTORESTInterface {
             $clothing->label,
             $clothing->kids,
             $clothing->gender_id,
-            $clothing->size_id,
-            [],
-            []
+            $clothing->size_id
         );
     }
 
