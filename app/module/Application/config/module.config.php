@@ -17,18 +17,18 @@ return [
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'index'
-                    ]
+                    ],
                 ],
             ],
-            'clothings-item' => [
+            'clothing' => [
                 'type' => Segment::class,
                 'options' => [
                     'route' => '/clothings/:uuid',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'clothing'
-                    ]
-                ]
+                    ],
+                ],
             ],
             'api' => [
                 'type' => Segment::class,
@@ -36,7 +36,7 @@ return [
                     'route' => '/api',
                     'defaults' => [
                         'controller' => Controller\Rest\ClothingRestController::class
-                    ]
+                    ],
                 ],
                 'may_terminate' => false,
                 'child_routes' => [
@@ -46,7 +46,7 @@ return [
                             'route' => '/clothings',
                             'defaults' => [
                                 'action' => 'get-clothings'
-                            ]
+                            ],
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
@@ -56,17 +56,41 @@ return [
                                     'route' => '/:uuid',
                                     'defaults' => [
                                         'action' => 'get-clothing'
-                                    ]
-                                ]
-                            ],
-                            'images' => [
-                                'type' => Segment::class,
-                                'options' => [
-                                    'route' => '/images/:uuid',
-                                    'defaults' => [
-                                        'action' => 'get-clothing-image'
-                                    ]
-                                ]
+                                    ],
+                                ],
+                                'may_terminate' => true,
+                                'child_routes' => [
+                                    'images' => [
+                                        'type' => Literal::class,
+                                        'options' => [
+                                            'route' => '/images',
+                                            'defaults' => [
+                                                'action' => 'get-clothing-images'
+                                            ],
+                                        ],
+                                        'may_terminate' => true,
+                                        'child_routes' => [
+                                            'item' => [
+                                                'type' => Segment::class,
+                                                'options' => [
+                                                    'route' => '/:image_id',
+                                                    'defaults' => [
+                                                        'action' => 'get-clothing-image'
+                                                    ],
+                                                ],
+                                            ],
+                                            'main-item' => [
+                                                'type' => Literal::class,
+                                                'options' => [
+                                                    'route' => '/main',
+                                                    'defaults' => [
+                                                        'action' => 'get-clothing-main-image'
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
                             ],
                         ],
                     ],

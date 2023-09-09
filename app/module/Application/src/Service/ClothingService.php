@@ -78,7 +78,7 @@ class ClothingService {
     /**
      * Return the path to the image file if it exists, otherwise return false
      */
-    private function getImagePath(string $uuid): string|bool {
+    public function getMainImageFilePath(string $uuid): string|bool {
         $uuid = basename($uuid);
         $path = Constants::CLOTHING_IMAGE_PATH . '/' . $uuid . '.jpg'; 
         return file_exists($path) ? $path : false;
@@ -89,10 +89,10 @@ class ClothingService {
     }
 
     private function getClothingItemUILink(string $clothing_uuid) {
-        return $this->getRoute('clothings-item', ['uuid' => $clothing_uuid]);
+        return $this->getRoute('clothing', ['uuid' => $clothing_uuid]);
     }
 
-    private function getImageLinkByClothing(Clothing $clothing) {
+    private function getMainImageLinkByClothing(Clothing $clothing) {
 
         $params = [
             'uuid' => $clothing->uuid,
@@ -102,21 +102,12 @@ class ClothingService {
             'force_canonical' => true,
         ];
 
-        return $this->getRoute('api/clothings/images', $params, $options);
-    }
-
-    private function getImageLinkById(string $uuid) {
-
-        $clothing = $this->getClothingById($uuid);
-        if (is_null($clothing))
-            return null;
-
-        return $this->getImageLinkByClothing($clothing);
+        return $this->getRoute('api/clothings/item/images/main-item', $params, $options);
     }
 
     private function createClothing_expandable(Clothing $clothing): array {
         return [
-            'image' => $this->getImageLinkByClothing($clothing),
+            'main_image' => $this->getMainImageLinkByClothing($clothing),
         ];
     }
 

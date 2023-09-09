@@ -7,7 +7,6 @@ namespace Application\Controller\Rest;
 use Application\Service\ClothingService;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\Stdlib\ResponseInterface;
-use Laminas\View\Model\ViewModel;
 
 class ClothingRestController extends AbstractActionController
 {
@@ -33,13 +32,13 @@ class ClothingRestController extends AbstractActionController
         die('clothingAction');
     }
 
-    public function getClothingImageAction(): ResponseInterface {
+    public function getClothingMainImageAction(): ResponseInterface {
         $response = $this->getResponse();
         $headers = $response->getHeaders();
 
         $uuid = $this->params('uuid');
 
-        if (!$path = $this->clothingService->getImagePath($uuid))
+        if (!$path = $this->clothingService->getMainImageFilePath($uuid))
             return $response->setStatusCode(404);
         
         $fileContent = file_get_contents($path);
