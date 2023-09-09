@@ -8,6 +8,5 @@ CREATE TABLE IF NOT EXISTS SUSE_CLOTHING (
     primary_color VARCHAR(255),
     label VARCHAR(255),
     size VARCHAR(10),
-    kids BOOLEAN,
     PRIMARY KEY (uuid)
 );

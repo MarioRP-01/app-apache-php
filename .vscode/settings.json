@@ -15,6 +15,7 @@
         "DTOREST",
         "fkey",
         "imageable",
-        "ossp"
+        "ossp",
+        "webui"
     ]
 }

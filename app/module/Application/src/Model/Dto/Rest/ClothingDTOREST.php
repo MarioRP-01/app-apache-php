@@ -17,9 +17,8 @@ class ClothingDTOREST implements DTORESTInterface {
         readonly ?string $description,
         readonly ?string $primary_color,
         readonly ?string $label,
-        readonly ?bool $kids,
-        readonly ?int $gender_id,
-        readonly ?int $size_id,
+        readonly ?string $gender,
+        readonly ?string $size,
         private array $_links = [],
         private array $_expandable = []
     ) {
@@ -35,9 +34,8 @@ class ClothingDTOREST implements DTORESTInterface {
             $clothing->description,
             $clothing->primary_color,
             $clothing->label,
-            $clothing->kids,
-            $clothing->gender_id,
-            $clothing->size_id
+            $clothing->gender,
+            $clothing->size
         );
     }
 
@@ -68,9 +66,8 @@ class ClothingDTOREST implements DTORESTInterface {
             'description' => $this->description,
             'primary_color' => $this->primary_color,
             'label' => $this->label,
-            'kids' => $this->kids,
-            'gender_id' => $this->gender_id,
-            'size_id' => $this->size_id,
+            'gender' => $this->gender,
+            'size' => $this->size,
             '_links' => $this->get_links(),
             '_expandable' => $this->get_expandable()
         ];

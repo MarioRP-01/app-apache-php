@@ -21,21 +21,14 @@ class ClothingDAO extends TableGateway {
         parent::__construct('suse_clothing', $adapter, null, $resultSetPrototype);
     }
 
-    // public function getClothingById(string $uuid): ?array {
-
-    //     $sql = "SELECT * FROM suse_clothing WHERE uuid = ?";
-
-    //     $statement = $this->adapter->createStatement($sql);
-    //     $result = $statement->execute([$uuid]);
-    //     return $result->current();
-    // }
-
     public function getClothingById(string $uuid): ?array {
 
         $sql = "
-            SELECT * 
-            FROM suse_clothing 
-            WHERE uuid = :uuid
+            SELECT c.*, s.name AS size, g.name AS gender
+            FROM suse_clothing c
+                INNER JOIN suse_size s ON c.size_id = s.id
+                INNER JOIN suse_gender g ON c.gender_id = g.id
+            WHERE c.uuid = :uuid
         ";
 
         $params = [
@@ -52,7 +45,13 @@ class ClothingDAO extends TableGateway {
         int $limit
     ) : ResultInterface {
         
-        $sql = "SELECT * FROM suse_clothing ORDER BY uuid";
+        $sql = "
+        SELECT c.*, s.name AS size, g.name AS gender
+        FROM suse_clothing c
+            INNER JOIN suse_size s ON c.size_id = s.id
+            INNER JOIN suse_gender g ON c.gender_id = g.id
+        ";
+
         return $this->executePagedQuery(
             $sql,
             [],

@@ -9,7 +9,7 @@ use Application\Model\Pagination\Page;
 use Application\Model\Pagination\PageInterface;
 use Application\Traits\RouterTrait;
 use Application\Utils\Constants;
-use Laminas\Hydrator\ObjectPropertyHydrator;
+use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Router\Http\TreeRouteStack;
 use Laminas\Stdlib\ArrayUtils;
 
@@ -17,13 +17,13 @@ class ClothingService {
     
     use RouterTrait;
 
-    private ObjectPropertyHydrator $hydrator;
+    private ReflectionHydrator $hydrator;
 
     public function __construct(
         readonly ClothingDAO $clothingDAO,
         readonly TreeRouteStack $router,
     ) {
-        $this->hydrator = new ObjectPropertyHydrator();
+        $this->hydrator = new ReflectionHydrator();
     }
 
     /**
@@ -37,7 +37,7 @@ class ClothingService {
 
         $result = array_map(function($item) {
 
-            $clothing =  $this->hydrator->hydrate($item, new Clothing);
+            $clothing = $this->hydrator->hydrate($item, new Clothing);
             return ClothingDTOREST::fromDTO($clothing)
                 ->set_expandable($this->createClothing_expandable($clothing))
                 ->set_links($this->createClothing_links($clothing));
@@ -71,31 +71,31 @@ class ClothingService {
             null;
     }
 
-    public function createDTORESTFromClothing(Clothing $clothing) {
+    private function createDTORESTfromDTO(Clothing $clothing) {
         $clothing = ClothingDTOREST::fromDTO($clothing);
     }
 
     /**
      * Return the path to the image file if it exists, otherwise return false
      */
-    public function getImagePath(string $uuid): string|bool {
+    private function getImagePath(string $uuid): string|bool {
         $uuid = basename($uuid);
         $path = Constants::CLOTHING_IMAGE_PATH . '/' . $uuid . '.jpg'; 
         return file_exists($path) ? $path : false;
     }
 
-    public function getClothingItemLink(int $clothing_id) {
-        return $this->getRoute('api/clothings/item', ['id' => $clothing_id]);
+    private function getClothingItemLink(string $clothing_uuid) {
+        return $this->getRoute('api/clothings/item', ['uuid' => $clothing_uuid]);
     }
 
-    public function getClothingItemUILink(int $clothing_id) {
-        return $this->getRoute('clothings-item', ['id' => $clothing_id]);
+    private function getClothingItemUILink(string $clothing_uuid) {
+        return $this->getRoute('clothings-item', ['uuid' => $clothing_uuid]);
     }
 
-    public function getImageLinkByClothing(Clothing $clothing) {
+    private function getImageLinkByClothing(Clothing $clothing) {
 
         $params = [
-            'file_name' => $clothing->uuid,
+            'uuid' => $clothing->uuid,
         ];
 
         $options = [
@@ -105,7 +105,7 @@ class ClothingService {
         return $this->getRoute('api/clothings/images', $params, $options);
     }
 
-    public function getImageLinkById(string $uuid) {
+    private function getImageLinkById(string $uuid) {
 
         $clothing = $this->getClothingById($uuid);
         if (is_null($clothing))
@@ -114,13 +114,13 @@ class ClothingService {
         return $this->getImageLinkByClothing($clothing);
     }
 
-    public function createClothing_expandable(Clothing $clothing): array {
+    private function createClothing_expandable(Clothing $clothing): array {
         return [
             'image' => $this->getImageLinkByClothing($clothing),
         ];
     }
 
-    public function createClothing_links(Clothing $clothing): array {
+    private function createClothing_links(Clothing $clothing): array {
 
         return [
             'self' => $this->getClothingItemLink($clothing->uuid),
@@ -128,7 +128,7 @@ class ClothingService {
         ];
     }
 
-    public function createClothingPage_links(
+    private function createClothingPage_links(
         int $start,
         int $limit,
         int $size

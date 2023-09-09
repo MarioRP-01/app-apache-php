@@ -11,9 +11,8 @@ class Clothing extends \ArrayObject {
 	public ?string $description;
 	public ?string $primary_color;
 	public ?string $label;
-	public ?bool $kids;
-	public ?int $gender_id;
-	public ?int $size_id;
+	public ?string $gender;
+	public ?string $size;
 
     public function exchangeArray(object|array $data): array {
         $this->uuid = $data['uuid'] ?? null;
@@ -23,9 +22,8 @@ class Clothing extends \ArrayObject {
 		$this->description = $data['description'] ?? null;
 		$this->primary_color = $data['primary_color'] ?? null;
 		$this->label = $data['label'] ?? null;
-		$this->kids = $data['kids'] ?? null;
-		$this->gender_id = $data['gender_id'] ?? null;
-		$this->size_id = $data['size_id'] ?? null;
+		$this->gender = $data['gender'] ?? null;
+		$this->size = $data['size'] ?? null;
 
         return [
             'uuid' => $this->uuid,
@@ -35,9 +33,8 @@ class Clothing extends \ArrayObject {
 			'description' => $this->description,
 			'primary_color' => $this->primary_color,
 			'label' => $this->label,
-			'kids' => $this->kids,
-			'gender_id' => $this->gender_id,
-			'size_id' => $this->size_id
+			'gender' => $this->gender,
+			'size' => $this->size
         ];
     }  
 }
