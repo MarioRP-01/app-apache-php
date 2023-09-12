@@ -1,69 +1,96 @@
 <?php
 
-use Application\Model\Clothing;
+use Application\Model\Dto\Rest\ClothingDTOREST;
+use Application\Model\Pagination\Page;
 
 /**
  * @var Laminas\View\Renderer\PhpRenderer $this
+ * @var Page<ClothingDTOREST> $clothings
  */
+
 ?>
 
 <div id="app" class="container-fluid g-0 mt-5 d-flex flex-column gap-5">
   <header class="su-text-container">
     <h1 class="text-center">Second Use</h1>
   </header>
-  <main>
+  <main class="container-fluid g-0 d-flex flex-column gap-5">
     <section class="su-text-container text-center">
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni nesciunt voluptatibus similique deserunt illum facilis aut quibusdam sequi assumenda, quasi quia! Nemo, cupiditate? Saepe fugiat perferendis voluptatibus dolore iure cumque?</p>
     </section>
+    <section class="container-fluid g-0 d-flex flex-column align-items-center">
+      <h2 class="mb-3">Discover our Best Sellers</h2>
+      <div class="su-product-horizontal-display">
+        <?php foreach ($best_sellers->getResults() as $clothing) { 
+          /** @var ClothingDTOREST $clothing */
+        ?>
+          <a href="<?= $clothing->get_links()['webui'] ?>" class="su-product-card-link">
+            <article class="su-small-product-card">
+              <div class="su-small-product-card-image-container">
+                <img
+                  src="<?= $clothing->get_expandable()['main_image']; ?>"
+                  loading="lazy"
+                  alt=""
+                >
+              </div>
+              <div class="su-small-product-card-content">
+                <h5 class="su-small-product-card-title"><?= $clothing->name ?></h5>
+                <span class="su-small-product-card-price"><?= $clothing->price ?></span>
+              </div>
+            </article>
+          </a>
+        <?php } ?>
+      </div>
+    </section>
+    <section class="container-fluid g-0 d-flex flex-column align-items-center">
+      <h2 class="mb-3">Just For You!</h2>
+      <div class="su-product-horizontal-display">
+        <?php foreach ($just_for_you->getResults() as $clothing) {
+          /** @var ClothingDTOREST $clothing */
+        ?>
+          <a href="<?= $clothing->get_links()['webui'] ?>" class="su-product-card-link">
+            <article class="su-small-product-card">
+              <div class="su-small-product-card-image-container">
+                <img
+                  src="<?= $clothing->get_expandable()['main_image']; ?>"
+                  loading="lazy"
+                  alt=""
+                >
+              </div>
+              <div class="su-small-product-card-content">
+                <h5 class="su-small-product-card-title"><?= $clothing->name ?></h5>
+                <span class="su-small-product-card-price"><?= $clothing->price ?></span>
+              </div>
+            </article>
+          </a>
+        <?php } ?>
+      </div>
+    </section>
     <section class="container su-product-grid">
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-5</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-5</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-5</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-5</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-5</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-6</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-7</p>
-        </div>
-      </div>
-      <div class="card" aria-hidden="true">
-        <img src="https://placehold.co/600x400" class="card-img-top" loading="lazy" alt="...">
-        <div class="card-body">
-          <p class="card-text">text-8</p>
-        </div>
-      </div>
+      <?php foreach ($clothings->getResults() as $clothing) { 
+        /** @var ClothingDTOREST $clothing */  
+      ?>
+        <a href="<?= $clothing->get_links()['webui'] ?>" class="su-product-card-link">
+          <article class="su-product-card" aria-hidden="true">
+            <div class="su-product-card-image-container">
+              <img 
+                src="<?= $clothing->get_expandable()['main_image']; ?>"
+                class="" 
+                loading="lazy" 
+                alt="Product image"
+              >
+            </div>
+            <div class="su-product-card-content">
+              <h5 class="su-product-card-title"><?= $clothing->name ?></h5>
+              <hr class="d-none d-sm-block my-2">
+              <div class="su-product-card-footer">
+                <span class="su-product-card-label"><?= $clothing->label ?></span>
+                <span class="su-product-card-price"><?= $clothing->price ?></span>
+              </div>
+            </div>
+          </article>
+        </a>  
+      <?php } ?>
     </section>
   </main>
 </div>

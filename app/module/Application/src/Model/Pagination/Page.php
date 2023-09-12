@@ -4,10 +4,13 @@ namespace Application\Model\Pagination;
 
 use Application\Model\Dto\Rest\DTORESTInterface;
 
+/**
+ * @template-covariant T of DTORESTInterface
+ */
 class Page implements PageInterface {
 
     /**
-     * @param array<DTORESTInterface> $results
+     * @param array<T> $results
      * @param int $limit
      * @param int $start
      * @param int $size
