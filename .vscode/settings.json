@@ -11,6 +11,10 @@
             "allowCompoundWords": true
         }
     ],
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
     "cSpell.words": [
         "DTOREST",
         "fkey",

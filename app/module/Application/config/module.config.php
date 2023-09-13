@@ -20,6 +20,16 @@ return [
                     ],
                 ],
             ],
+            'clothings-filter' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/clothings',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action' => 'clothings-filter'
+                    ],
+                ],
+            ],
             'clothing' => [
                 'type' => Segment::class,
                 'options' => [
