@@ -19,17 +19,16 @@ class ClothingRestController extends AbstractActionController
         $start = $this->params()->fromQuery('start', 0);
         $limit = $this->params()->fromQuery('limit', 8);
 
-        $clothings = $this->clothingService->getAllClothingPaged($start, $limit);
+        if ($clothing_name = $this->params()->fromQuery('name'))
+            $clothings = $this->clothingService->getClothingByNamePaged($clothing_name, $start, $limit);
+        else
+            $clothings = $this->clothingService->getAllClothingPaged($start, $limit);
 
         $response = $this->getResponse();
 
         return $response
             ->setContent(json_encode($clothings))
             ->setStatusCode(200);
-    }
-  
-    public function getClothingAction() {
-        die('clothingAction');
     }
 
     public function getClothingMainImageAction(): ResponseInterface {

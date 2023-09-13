@@ -55,6 +55,40 @@ class ClothingService {
         );
     }
 
+    public function getClothingByNamePaged(
+        string $name,
+        int $start,
+        int $limit
+    ): PageInterface {
+
+        $result = ArrayUtils::iteratorToArray(
+            $this->clothingDAO->getClothingByNamePaged(
+                $name,
+                $start,
+                $limit
+            )
+        );
+
+        $result = array_map(function($item) {
+
+            $clothing = $this->hydrator->hydrate($item, new Clothing);
+            return ClothingDTOREST::fromDTO($clothing)
+                ->set_expandable($this->createClothing_expandable($clothing))
+                ->set_links($this->createClothing_links($clothing));
+
+        }, $result);
+
+        $size = count($result);
+
+        return new Page(
+            $result,
+            $limit,
+            $start,
+            $size,
+            $this->createClothingPage_links($start, $limit, $size)
+        );
+    }
+
     public function getClothingById(string $uuid): ?Clothing {
         $result = $this->clothingDAO->getClothingById($uuid);
         if (is_null($result)) return null;

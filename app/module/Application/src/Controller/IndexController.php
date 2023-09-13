@@ -31,4 +31,21 @@ class IndexController extends AbstractActionController
             'clothing' => $this->clothingService->getClothingDTORESTById($clothing_uuid)
         ]);
     }
+
+    public function clothingsFilterAction() {
+
+        $clothing_name = $this->params()->fromQuery('name');
+        $start = $this->params()->fromQuery('start', 0);
+        $limit = $this->params()->fromQuery('limit', 8);
+
+        if (is_null($clothing_name)) throw new \Exception('Not implemented');
+
+        return new ViewModel([
+            'clothings' => $this->clothingService->getClothingByNamePaged(
+                $clothing_name,
+                $start,
+                $limit
+            )
+        ]);
+    }
 }

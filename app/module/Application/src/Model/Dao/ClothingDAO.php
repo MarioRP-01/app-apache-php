@@ -40,6 +40,35 @@ class ClothingDAO extends TableGateway {
         return $result->current();
     }
 
+    public function getClothingByNamePaged(
+        string $name,
+        int $start,
+        int $limit
+    ): ResultInterface {
+
+        $sql = "
+            SELECT
+                c.*, s.name AS size, g.name AS gender
+            FROM 
+                suse_clothing c
+                INNER JOIN suse_size s ON c.size_id = s.id
+                INNER JOIN suse_gender g ON c.gender_id = g.id
+            WHERE
+                c.name ILIKE '%' || :name || '%'
+        ";
+
+        $params = [
+            'name' => $name
+        ];
+
+        return $this->executePagedQuery(
+            $sql,
+            $params,
+            $start,
+            $limit
+        );
+    }
+
     public function getAllClothingPaged(
         int $start, 
         int $limit
