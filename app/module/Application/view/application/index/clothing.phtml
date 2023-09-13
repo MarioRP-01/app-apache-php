@@ -1,0 +1,26 @@
+<?php
+
+use Application\Model\Dto\Rest\ClothingDTOREST;
+
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ * @var ClothingDTOREST $clothing
+ */
+?>
+
+<div id="app" class="container-fluid g-0 mt-5 d-flex">
+    <main class="container d-flex flex-wrap row-gap-5 flex-grow-1">
+        <div class="su-product-image-display d-flex justify-content-center flex-grow-1">
+            <img src="<?= $clothing->get_expandable()['main_image']; ?>" alt="">
+        </div>
+        <div class="su-text-container d-flex flex-column justify-content-center text-center">
+            <h1 class="text-wrap-balance"><?= $clothing->name ?></h1>
+            <p>Gender: <? $clothing->gender ?></p>
+            <p>Size: <?= $clothing->size ?></p>
+            <p>Brand: <?= $clothing->brand ?></p>
+            <p>Label: <?= $clothing->label ?></p>
+            <p>Description: <?= $clothing->description ?></p>
+            <p>Price: <?= $clothing->price ?></p>
+        </div>
+    </main>
+</div>

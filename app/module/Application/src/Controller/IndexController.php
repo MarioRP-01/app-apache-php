@@ -25,6 +25,10 @@ class IndexController extends AbstractActionController
     }
 
     public function clothingAction() {
-        return new ViewModel();
+        $clothing_uuid = $this->params()->fromRoute('uuid');
+
+        return new ViewModel([
+            'clothing' => $this->clothingService->getClothingDTORESTById($clothing_uuid)
+        ]);
     }
 }

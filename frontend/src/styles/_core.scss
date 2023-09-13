@@ -1,5 +1,3 @@
-.example2 {
-    @include breakpoint(medium) {
-        background-color: red;
-    }
+.text-wrap-balance {
+    text-wrap: balance;
 }
