@@ -1,7 +1,8 @@
-const { SRC, DIST } = require('./paths.cjs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const autoprefixer = require('autoprefixer')
-// const devMode = process.env.NODE_ENV !== 'production'
+const path = require('path')
+
+const SRC = path.resolve(__dirname, '..', 'src')
 
 const plugins = [
   new MiniCssExtractPlugin({
@@ -58,10 +59,6 @@ module.exports = {
   entry: {
     main: { import: './main.js' },
     index: { import: './pages/index.js' }
-  },
-  output: {
-    path: DIST,
-    filename: 'js/[name].js'
   },
   module: {
     rules: [
