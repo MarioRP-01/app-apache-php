@@ -1,0 +1,10 @@
+app/public/*
+app/composer.phar
+app/vendor
+frontend/node_modules/
+frontend/dist/
+
+!/app/public/index.php
+!/app/public/.htaccess
+!/app/public/web.config
+
