@@ -59,8 +59,8 @@ WORKDIR /var/www
 ## Install dependencies
 RUN composer install
 
-## Add user and group
-RUN addgroup --gid $GROUP_ID user
-RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
+# ## Add user and group
+# RUN addgroup --gid $GROUP_ID user
+# RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
 
-USER user
+# USER user
