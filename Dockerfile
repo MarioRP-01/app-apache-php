@@ -13,8 +13,8 @@ RUN npm run prod
 
 FROM php:${PHP_VERSION}-apache as php
 
-ARG USER_ID
-ARG GROUP_ID
+ARG USER_ID=1000
+ARG GROUP_ID=1000
 
 COPY ./app /var/www
 COPY ./httpd.conf /etc/apache2/sites-available/000-default.conf
