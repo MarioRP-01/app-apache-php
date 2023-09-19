@@ -2,6 +2,21 @@
 
 This guide will help you to set up the data storage for the project. It is meant to emulate a real environment, so it will use different strategies for different types of data.
 
+## Volumes for General File Storage
+
+In this example, we will use a volume for general file storage, although in a real use case, we would prefer an NFS (Network File System) volume for general file storage. NFS is a distributed file system protocol that allows you to share files and directories across a network. It provides a convenient way to store and access files from multiple machines.
+
+In our case, we will create a regular volume changing the `docker-compose.yml` file as follows:
+
+```yaml
+services:
+    app_php:
+        ...
+        volumes:
+            ...
+            - ./resources:/data-nfs
+```
+
 ## Dataset
 
 The [clothing-dataset-small](https://github.com/alexeygrigorev/clothing-dataset-small) is the dataset we will be working with in this project. It contains structured data related to clothing items, such as their names, categories, prices, and other relevant information.
@@ -49,21 +64,6 @@ To dump the data into the database, we will follow the steps below:ç
     ```shell
     ./bin/init-db.sh
     ```
-
-## Volumes for General File Storage
-
-In this example, we will use a volume for general file storage, although in a real use case, we would prefer an NFS (Network File System) volume for general file storage. NFS is a distributed file system protocol that allows you to share files and directories across a network. It provides a convenient way to store and access files from multiple machines.
-
-In our case, we will create a regular volume changing the `docker-compose.yml` file as follows:
-
-```yaml
-services:
-    app_php:
-        ...
-        volumes:
-            ...
-            - ./resources:/data-nfs
-```
 
 ## References
 
