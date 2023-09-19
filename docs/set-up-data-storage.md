@@ -39,8 +39,6 @@ find clothing-dataset-small -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -ina
 
 Inside the `pg_data` directory you will find a `data.csv` file. This file contains some data from the dataset. It was generated using the [dataset-manager](https://github.com/MarioRP-01/clothing-dataset-small-manager) tool.
 
-Now just move `data/data.csv` to `pg_data` directory and `data/images` to `nfs_server`.
-
 ## PostgreSQL
 
 PostgreSQL is a powerful open-source relational database management system that is widely used for storing structured data. It provides robust features for data integrity, transaction management, and efficient querying.

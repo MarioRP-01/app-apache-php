@@ -2,8 +2,11 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- clothing
-ALTER TABLE SUSE_CLOTHING
+ALTER TABLE suse_clothing
 ALTER COLUMN UUID SET DEFAULT uuid_generate_v4 ();
+
+ALTER TABLE suse_clothing
+DROP COLUMN IF EXISTS kids;
 
 -- gender
 CREATE TABLE suse_gender (
