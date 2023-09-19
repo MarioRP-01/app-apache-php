@@ -16,10 +16,10 @@ Once you have downloaded the dataset, you can use the following commands to move
 
 ```shell
 # Create the images directory if it doesn't exist
-mkdir -p images
+mkdir -p resources/images
 
 # Move all image files to the images directory
-find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec mv {} images/ \;
+find clothing-dataset-small -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec mv {} resources/images/ \;
 ```
 
 Inside the `pg_data` directory you will find a `data.csv` file. This file contains some data from the dataset. It was generated using the [dataset-manager](https://github.com/MarioRP-01/clothing-dataset-small-manager) tool.
