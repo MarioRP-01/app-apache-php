@@ -16,8 +16,8 @@ class ClothingRestController extends AbstractActionController
     ) { }
 
     public function getClothingsAction() {
-        $start = $this->params()->fromQuery('start', 0);
-        $limit = $this->params()->fromQuery('limit', 8);
+        $start = intval($this->params()->fromQuery('start', 0));
+        $limit = intval($this->params()->fromQuery('limit', 20));
 
         if ($clothing_name = $this->params()->fromQuery('name'))
             $clothings = $this->clothingService->getClothingByNamePaged($clothing_name, $start, $limit);

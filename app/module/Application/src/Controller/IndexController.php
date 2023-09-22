@@ -35,8 +35,8 @@ class IndexController extends AbstractActionController
     public function clothingsFilterAction() {
 
         $clothing_name = $this->params()->fromQuery('name');
-        $start = $this->params()->fromQuery('start', 0);
-        $limit = $this->params()->fromQuery('limit', 8);
+        $start = intval($this->params()->fromQuery('start', 0));
+        $limit = intval($this->params()->fromQuery('limit', 20));
 
         if (is_null($clothing_name)) throw new \Exception('Not implemented');
 
