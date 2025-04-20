@@ -66,7 +66,7 @@ CREATE TABLE suse_image (
     id SERIAL,
     filename VARCHAR(255) NOT NULL UNIQUE,
     imageable_type VARCHAR(255) NOT NULL,
-    imageable_id UUID NOT NULL,
+    imageable_id UUID NOT NULL REFERENCES suse_clothing(uuid) ON DELETE CASCADE,
     PRIMARY KEY (id)
 );
 
