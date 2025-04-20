@@ -2,7 +2,7 @@ ARG NODE_VERSION=20
 ARG ALPINE_VERSION=3.17
 ARG PHP_VERSION=8.2
 
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} as node_builder
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS node_builder
 
 COPY ./frontend /app
 WORKDIR /app
@@ -11,7 +11,7 @@ RUN npm run prod
 
 ######################
 
-FROM php:${PHP_VERSION}-apache as php
+FROM php:${PHP_VERSION}-apache AS php
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
