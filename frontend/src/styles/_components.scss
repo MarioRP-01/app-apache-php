@@ -26,7 +26,7 @@
     overflow-x: scroll;
     overflow-y: auto;
     scroll-snap-type: x mandatory;
-    scrollbar-color: #FFF $body-bg;
+    scrollbar-color: #000 $body-bg;
     scrollbar-width: thin;
 
     @supports not ((scrollbar-color: #FFF $body-bg) or (scrollbar-width: thin)) {
@@ -90,7 +90,7 @@
 .su-product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     justify-items: center;
     align-items: center;
 
@@ -102,7 +102,7 @@
 .su-product-card {
     max-width: 9rem;
     width: 100%;
-    background-color: #FED8B1;
+    background-color: #fff;
     background-position: center;
     position: relative;
     border-radius: 10px;
