@@ -79,7 +79,7 @@ docker compose up -d
 
 After this, you can access the application on `http://localhost:8080`
 
-### Install or Update Dependendencies
+### Install or Update Dependencies
 
 ```shell
 # install dependencies based in composer.lock
@@ -89,6 +89,13 @@ php composer.phar install
 
 # update dependencies based in composer.json
 php composer.phar update 
+```
+
+### Install Node Dependencies
+
+```shell
+cd frontend
+npm ci
 ```
 
 ### Make Changes to the Dockerfile
